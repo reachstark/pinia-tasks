@@ -2,26 +2,8 @@ import { defineStore } from 'pinia'
 
 export const useTaskStore = defineStore('taskStore', {
     state: () => ({
-        tasks: [
-            {
-                id: 1,
-                title: 'Learn Vue Basics',
-                isFav: false,
-                completed: true,
-            },
-            {
-                id: 2,
-                title: 'Learn Pinia - State Management',
-                isFav: false,
-                completed: false,
-            },
-            {
-                id: 3,
-                title: 'Learn Vue Advance',
-                isFav: true,
-                completed: false,
-            }
-        ],
+        tasks: [],
+        loading: false,
         appName: 'Tudu - Tasks',
     }),
     getters: {
@@ -46,6 +28,13 @@ export const useTaskStore = defineStore('taskStore', {
         },
     },
     actions: {
+        async fetchData() {
+            this.loading = true
+            const res = await fetch('http://localhost:3000/tasks')
+            const tasks = await res.json()
+            this.tasks = tasks
+            this.loading = false
+        },
         toggleFav(id) {
             const task = this.tasks.find(t => t.id === id)
             task.isFav = !task.isFav

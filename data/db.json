@@ -1,0 +1,22 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "title": "Learn Vue Basics",
+            "isFav": false,
+            "completed": true
+        },
+        {
+            "id": 2,
+            "title": "Learn Pinia - State Management",
+            "isFav": false,
+            "completed": false
+        },
+        {
+            "id": 3,
+            "title": "Learn Vue Advance",
+            "isFav": true,
+            "completed": false
+        }
+    ]
+}

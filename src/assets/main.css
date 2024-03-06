@@ -138,3 +138,12 @@ form button {
     padding: 5px;
     border-radius: 100px;
 }
+
+.loading {
+    max-width: 580px;
+    margin: 20px auto;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+}
