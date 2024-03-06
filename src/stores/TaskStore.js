@@ -35,21 +35,49 @@ export const useTaskStore = defineStore('taskStore', {
             this.tasks = tasks
             this.loading = false
         },
-        toggleFav(id) {
+        async toggleFav(id) {
             const task = this.tasks.find(t => t.id === id)
             task.isFav = !task.isFav
+
+            const res = await fetch('http://localhost:3000/tasks/' + id, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ isFav: task.isFav })
+            })
         },
-        addTask(task) {
+        async addTask(task) {
             this.tasks.push(task)
+
+            const res = await fetch('http://localhost:3000/tasks', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(task)
+            })
         },
-        deleteTask(id) {
+        async deleteTask(id) {
             this.tasks = this.tasks.filter(t => {
                 return t.id !== id
             })
+
+            const res = await fetch('http://localhost:3000/tasks/' + id, {
+                method: 'DELETE',
+            })
         },
-        toggleCompleted(id) {
+        async toggleCompleted(id) {
             const task = this.tasks.find(t => t.id === id)
             task.completed = !task.completed
+
+            const res = await fetch('http://localhost:3000/tasks/' + id, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ completed: task.completed })
+            })
         },
     }
 })
