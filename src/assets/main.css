@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+body {
+    background: #40434e;
+    color: #444;
+    margin: 0;
+}
+
+body * {
+    font-family: "Poppins";
+}
+
+/* header */
+header {
+    text-align: center;
+    background: #79c99e;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header img {
+    max-width: 60px;
+    transform: rotate(-10deg);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    padding-top: 25px;
+    margin-left: 15px;
+    color: #fff;
+    transform: rotate(2deg);
+}
+
+/* task list */
+.task-list {
+    max-width: 580px;
+    margin: 20px auto;
+    color: #79c99e;
+}
+
+.task {
+    padding: 6px 20px;
+    background: #fff;
+    margin-top: 14px;
+    border-radius: 18px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task h4,
+.task .icons {
+    color: #3a3335;
+    display: inline-block;
+}
+
+.task .icons {
+    text-align: right;
+}
+
+.task i {
+    font-size: 1.4em;
+    margin-left: 6px;
+    cursor: pointer;
+    color: #bbb;
+}
+
+.task i.active {
+    color: #D81E5B;
+}
+
+.task i.task-completed {
+    color: #79c99e;
+}
+
+.filter {
+    width: 580px;
+    margin: 20px auto;
+    text-align: right;
+}
+
+
+.filter button {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 100px;
+    background: #e7e7e7;
+    color: #555;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.filter button.active {
+    background: #79c99e;
+    color: #fff;
+}
+
+.new-task-form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 12px;
+    border-radius: 16px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+    display: flex;
+}
+
+form {
+    width: 580px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    gap: 10px;
+}
+
+form input {
+    border: 0;
+    padding: 6px 10px;
+    font-size: 0.8em;
+    color: #333;
+    outline: none;
+}
+
+form button {
+    width: 80px;
+    background: #79c99e;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 100px;
+}
