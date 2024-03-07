@@ -3,13 +3,13 @@
     {
       "id": "1",
       "title": "Learn Vue Basics",
-      "isFav": false,
-      "completed": false
+      "isFav": true,
+      "completed": true
     },
     {
       "id": "2",
       "title": "Learn Pinia - State Management",
-      "isFav": false,
+      "isFav": true,
       "completed": false
     },
     {

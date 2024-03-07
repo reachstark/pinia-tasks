@@ -13,6 +13,9 @@ export const useTaskStore = defineStore('taskStore', {
         completedTasks() {
             return this.tasks.filter(t => t.completed)
         },
+        pendingTasks() {
+            return this.tasks.filter(t => !t.completed)
+        },
         favsCount() {
             return this.tasks.reduce((preValue, curValue) => {
                 return curValue.isFav ? preValue + 1 : preValue
@@ -21,6 +24,11 @@ export const useTaskStore = defineStore('taskStore', {
         completedCount() {
             return this.tasks.reduce((preValue, curValue) => {
                 return curValue.completed ? preValue + 1 : preValue
+            }, 0) // initial value
+        },
+        pendingCount() {
+            return this.tasks.reduce((preValue, curValue) => {
+                return !curValue.completed ? preValue + 1 : preValue
             }, 0) // initial value
         },
         totalCount: (state) => {

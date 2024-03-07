@@ -1,7 +1,8 @@
 <template>
     <form @submit.prevent="onSubmit">
         <input type="text" v-model="newTask" placeholder="What do you need to do?">
-        <button>Add</button>
+        <button style="display: flex; align-items: center;">
+      <i class="material-icons">add</i>Add</button>
     </form>
 </template>
 

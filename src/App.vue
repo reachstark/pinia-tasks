@@ -18,6 +18,8 @@
             @click="filter = 'all'">All</button>
             <button class="filter-btn" :class="{ 'active': filter === 'favs' }"
             @click="filter = 'favs'">Favorites</button>
+            <button class="filter-btn" :class="{ 'active': filter === 'pending' }"
+            @click="filter = 'pending'">Pending</button>
             <button class="filter-btn" :class="{ 'active': filter === 'completed' }"
             @click="filter = 'completed'">Completed</button>
         </div>
@@ -35,6 +37,12 @@
         <div class="task-list" v-if="filter === 'favs'">
             <h3>Favorites ({{ taskStore.favsCount }})</h3>
             <div v-for="task in taskStore.favs">
+                <TaskDetails :task="task"/>
+            </div>
+        </div>
+        <div class="task-list" v-if="filter === 'pending'">
+            <h3>Pending ({{ taskStore.pendingCount }})</h3>
+            <div v-for="task in taskStore.pendingTasks">
                 <TaskDetails :task="task"/>
             </div>
         </div>
