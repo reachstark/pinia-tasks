@@ -67,13 +67,14 @@ export const useTaskStore = defineStore('taskStore', {
             })
         },
         async deleteTask(id) {
-            this.tasks = this.tasks.filter(t => {
-                return t.id !== id
-            })
-
-            const res = await fetch('http://localhost:3000/tasks/' + id, {
-                method: 'DELETE',
-            })
+            console.log('Deleting task: ', id)
+            if (window.confirm('Are you sure you want to delete?')) {
+                console.log('Task ID: ' + id + ' deleted')
+                this.tasks = this.tasks.filter(t => t.id !== id)
+                await fetch('http://localhost:3000/tasks/' + id, {
+                    method: 'DELETE'
+                })
+            }
         },
         async toggleCompleted(id) {
             const task = this.tasks.find(t => t.id === id)
