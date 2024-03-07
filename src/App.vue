@@ -25,30 +25,30 @@
         </div>
 
         <!-- loading -->
-        <div class="loading" v-if="taskStore.loading">Loading tasks...</div>
+        <div class="loading" v-if="loading">Loading tasks...</div>
 
          <!-- content -->
         <div class="task-list" v-if="filter === 'all'">
-            <h3>All Tasks ({{ taskStore.totalCount }})</h3>
-            <div v-for="task in taskStore.tasks">
+            <h3>All Tasks ({{ totalCount }})</h3>
+            <div v-for="task in tasks">
                 <TaskDetails :task="task"/>
             </div>
         </div>
         <div class="task-list" v-if="filter === 'favs'">
-            <h3>Favorites ({{ taskStore.favsCount }})</h3>
-            <div v-for="task in taskStore.favs">
+            <h3>Favorites ({{ favsCount }})</h3>
+            <div v-for="task in favs">
                 <TaskDetails :task="task"/>
             </div>
         </div>
         <div class="task-list" v-if="filter === 'pending'">
-            <h3>Pending ({{ taskStore.pendingCount }})</h3>
-            <div v-for="task in taskStore.pendingTasks">
+            <h3>Pending ({{ pendingCount }})</h3>
+            <div v-for="task in pendingTasks">
                 <TaskDetails :task="task"/>
             </div>
         </div>
         <div class="task-list" v-if="filter === 'completed'">
-            <h3>Completed ({{ taskStore.completedCount }})</h3>
-            <div v-for="task in taskStore.completedTasks">
+            <h3>Completed ({{ completedCount }})</h3>
+            <div v-for="task in completedTasks">
                 <TaskDetails :task="task"/>
             </div>
         </div>
@@ -61,16 +61,20 @@
     import TaskDetails from './components/TaskDetails.vue'
     import TaskForm from './components/TaskForm.vue'
     import { ref } from 'vue'
+    import { storeToRefs } from 'pinia';
     export default {
         components: { TaskDetails, TaskForm },
         setup() {
             const taskStore = useTaskStore()
+            
+            // call loading instead of taskStore.loading
+            const { tasks, loading, favs, totalCount, favsCount, pendingTasks, pendingCount, completedTasks, completedCount } = storeToRefs(taskStore)
 
             taskStore.fetchData()
 
             const filter = ref('all')
 
-            return { taskStore, filter }
+            return { taskStore, filter, tasks, loading, favs, totalCount, favsCount, pendingTasks, pendingCount, completedTasks, completedCount }
         }
     }
 </script>
