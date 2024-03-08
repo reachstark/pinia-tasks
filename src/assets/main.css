@@ -55,11 +55,13 @@ header h1 {
 
 .task h4 {
     color: #3a3335;
+    font-size: .9em;
     width: 82%;
     line-break: anywhere;
 }
 
 .task .icons {
+    padding-top: 5px;
     color: #3a3335;
     display: inline-block;
 }
@@ -154,4 +156,8 @@ form button {
     color: #fff;
     font-size: 1.2em;
     font-weight: 500;
+}
+
+.theme-switch {
+    cursor: pointer;
 }

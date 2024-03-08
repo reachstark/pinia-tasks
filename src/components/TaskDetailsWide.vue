@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import { useTaskStore } from '../stores/TaskStore'
+    import { useTaskStore } from '../stores/TaskStore.js'
     export default {
         props: ['task'],
         setup() {
@@ -26,4 +26,4 @@
             return { taskStore }
         }
     }
-</script>
+</script>./TaskDetailsWide.vue/index.js

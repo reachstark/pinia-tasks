@@ -58,8 +58,8 @@
 
 <script>
     import { useTaskStore } from './stores/TaskStore'
-    import TaskDetails from './components/TaskDetails.vue'
-    import TaskForm from './components/TaskForm.vue'
+    import TaskDetails from './components/TaskDetailsWide.vue'
+    import TaskForm from './components/TaskFormWide.vue'
     import { ref } from 'vue'
     import { storeToRefs } from 'pinia';
     export default {
