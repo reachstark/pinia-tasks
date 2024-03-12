@@ -4,6 +4,7 @@ export const useTaskStore = defineStore('taskStore', {
     state: () => ({
         tasks: [],
         loading: false,
+        showAddTask: false,
         appName: 'Tudu - Tasks',
     }),
     getters: {

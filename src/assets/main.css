@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
+.appbar {
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.4em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 body {
     background: #40434e;
     color: #444;
@@ -42,6 +52,39 @@ header h1 {
     color: #79c99e;
 }
 
+.task-mobile {
+    margin: 20px auto;
+    background: #BDD9BF;
+    border-radius: 100px;
+    color: #2E4052;
+    font-size: 0.8em;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin: 12px auto;
+}
+
+.task-mobile h4 {
+    width: 80%;
+    line-break: anywhere;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task-mobile .icons {
+    background-color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 80px;
+    padding: 3px;
+    justify-content: center;
+    color: #5F5B6B;
+    display: flex;
+}
+
 .task {
     padding: 6px 20px;
     background: #fff;
@@ -77,8 +120,16 @@ header h1 {
     color: #bbb;
 }
 
+.task-mobile i.active {
+    color: #C62E65;
+}
+
 .task i.active {
     color: #D81E5B;
+}
+
+.task-mobile i.task-completed {
+    color: #79c99e;
 }
 
 .task i.task-completed {
@@ -89,6 +140,27 @@ header h1 {
     width: 580px;
     margin: 20px auto;
     text-align: right;
+}
+
+.filter-mobile {
+    text-align: center;
+}
+
+.filter-mobile button {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 100px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.filter-mobile button.active {
+    background: #79c99e;
+    color: #fff;
 }
 
 
@@ -160,4 +232,47 @@ form button {
 
 .theme-switch {
     cursor: pointer;
+}
+
+.fab-add {
+    position: absolute;
+    bottom: 80px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+    background-color: #79c99e;
+    color: white;
+    border-radius: 12px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.fab-add:hover {
+    background-color: #3c9372;
+}
+
+.task-counts {
+    position: absolute;
+    left: 16px;
+    bottom: 84px;
+    color: #fff;
+    border-radius: 35px;
+    background-color: #79c99e;
+    padding: 6px 12px;
+    justify-content: center;
+    margin-top: 16px;
+    margin-left: 4px;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 500;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.task-list-mobile {
+    padding-top: 8px;
 }

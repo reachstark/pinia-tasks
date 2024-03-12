@@ -16,5 +16,10 @@ export const useSettingStore = defineStore('settingStore', {
         setMobileView(bool: boolean) {
             this.mobileView = bool
         },
+        updateWidth() {
+            const screenWidth = window.innerWidth
+            const isMobile = screenWidth < 640
+            this.setMobileView(isMobile)
+        }
     },
 })
