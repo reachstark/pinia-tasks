@@ -73,7 +73,7 @@
     import { ref } from 'vue'
     import { storeToRefs } from 'pinia';
     import { useTaskStore } from '@/stores/TaskStore';
-import AddTaskPopup from '../AddTaskPopup.vue';
+    import AddTaskPopup from '../AddTaskPopup.vue';
     export default {
     setup() {
         const taskStore = useTaskStore()
