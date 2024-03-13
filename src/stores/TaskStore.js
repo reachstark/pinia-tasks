@@ -39,7 +39,16 @@ export const useTaskStore = defineStore('taskStore', {
         },
     },
     actions: {
-        async fetchData() {
+        async refreshData() {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'tudu-web'));
+                const tasks = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                this.tasks = tasks;
+            } catch (error) {
+                console.error('Error fetching tasks:', error);
+            }
+        },
+        async loadData() {
             this.loading = true;
             try {
                 const querySnapshot = await getDocs(collection(db, 'tudu-web'));
@@ -57,7 +66,7 @@ export const useTaskStore = defineStore('taskStore', {
                 const taskDoc = await getDoc(taskRef);
                 if (taskDoc.exists()) {
                     await updateDoc(taskRef, { isFav: !taskDoc.data().isFav });
-                    await this.fetchData(); // Refresh data after updating task
+                    await this.refreshData(); // Refresh data after updating task
                 }
             } catch (error) {
                 console.error('Error toggling favorite status:', error);
@@ -66,7 +75,7 @@ export const useTaskStore = defineStore('taskStore', {
         async addTask(task, title) {
             try {
                 await setDoc(doc(db, 'tudu-web', title), { ...task, });
-                await this.fetchData();
+                await this.refreshData();
             } catch (error) {
                 console.error('Error adding task:', error);
             }
@@ -76,7 +85,7 @@ export const useTaskStore = defineStore('taskStore', {
                 try {
                     const taskRef = doc(db, 'tudu-web', id);
                     await deleteDoc(taskRef);
-                    await this.fetchData();
+                    await this.refreshData();
                 } catch (error) {
                     console.error('Error deleting task:', error);
                 }
@@ -88,6 +97,7 @@ export const useTaskStore = defineStore('taskStore', {
                 const taskDoc = await getDoc(taskRef);
                 if (taskDoc.exists()) {
                     await updateDoc(taskRef, { completed: !taskDoc.data().completed });
+                    await this.refreshData(); // Refresh data after updating task
                 }
             } catch (error) {
                 console.error('Error toggling completion status:', error);
