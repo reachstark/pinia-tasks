@@ -1,6 +1,7 @@
 # pinia-tasks
 
-Link: https://tudu-4e054.web.app/
+Link #1: https://tudu-4e054.web.app/
+Link #2: https://tudu-4e054.firebaseapp.com/
 
 ## Screenshot
 
