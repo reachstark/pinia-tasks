@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import { collection, addDoc, setDoc, updateDoc, getDoc, getDocs, doc, deleteDoc } from 'firebase/firestore'
+import db from '../firebase/init'
 
 export const useTaskStore = defineStore('taskStore', {
     state: () => ({
@@ -38,56 +40,58 @@ export const useTaskStore = defineStore('taskStore', {
     },
     actions: {
         async fetchData() {
-            this.loading = true
-            const res = await fetch('http://localhost:3000/tasks')
-            const tasks = await res.json()
-            this.tasks = tasks
-            this.loading = false
+            this.loading = true;
+            try {
+                const querySnapshot = await getDocs(collection(db, 'tudu-web'));
+                const tasks = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                this.tasks = tasks;
+            } catch (error) {
+                console.error('Error fetching tasks:', error);
+            } finally {
+                this.loading = false;
+            }
         },
         async toggleFav(id) {
-            const task = this.tasks.find(t => t.id === id)
-            task.isFav = !task.isFav
-
-            const res = await fetch('http://localhost:3000/tasks/' + id, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ isFav: task.isFav })
-            })
+            try {
+                const taskRef = doc(db, 'tudu-web', id);
+                const taskDoc = await getDoc(taskRef);
+                if (taskDoc.exists()) {
+                    await updateDoc(taskRef, { isFav: !taskDoc.data().isFav });
+                    await this.fetchData(); // Refresh data after updating task
+                }
+            } catch (error) {
+                console.error('Error toggling favorite status:', error);
+            }
         },
-        async addTask(task) {
-            this.tasks.push(task)
-
-            const res = await fetch('http://localhost:3000/tasks', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(task)
-            })
+        async addTask(task, title) {
+            try {
+                await setDoc(doc(db, 'tudu-web', title), { ...task, });
+                await this.fetchData();
+            } catch (error) {
+                console.error('Error adding task:', error);
+            }
         },
         async deleteTask(id) {
-            console.log('Deleting task: ', id)
-            if (window.confirm('Are you sure you want to delete?')) {
-                console.log('Task ID: ' + id + ' deleted')
-                this.tasks = this.tasks.filter(t => t.id !== id)
-                await fetch('http://localhost:3000/tasks/' + id, {
-                    method: 'DELETE'
-                })
+            if (window.confirm('Are you sure you want to delete this task?')) {
+                try {
+                    const taskRef = doc(db, 'tudu-web', id);
+                    await deleteDoc(taskRef);
+                    await this.fetchData();
+                } catch (error) {
+                    console.error('Error deleting task:', error);
+                }
             }
         },
         async toggleCompleted(id) {
-            const task = this.tasks.find(t => t.id === id)
-            task.completed = !task.completed
-
-            const res = await fetch('http://localhost:3000/tasks/' + id, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ completed: task.completed })
-            })
+            try {
+                const taskRef = doc(db, 'tudu-web', id);
+                const taskDoc = await getDoc(taskRef);
+                if (taskDoc.exists()) {
+                    await updateDoc(taskRef, { completed: !taskDoc.data().completed });
+                }
+            } catch (error) {
+                console.error('Error toggling completion status:', error);
+            }
         },
     }
 })
