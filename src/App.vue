@@ -14,7 +14,7 @@
         setup() {
             const taskStore = useTaskStore()
             const settingStore = useSettingStore()
-            taskStore.fetchData()
+            taskStore.loadData()
 
             const updateWidth = () => {
                 settingStore.updateWidth()
