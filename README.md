@@ -1,11 +1,13 @@
-# pinia-tasks
+# pinia-tasks (responsive UI)
 
-Link #1: https://tudu-4e054.web.app/
-Link #2: https://tudu-4e054.firebaseapp.com/
+* Link #1: https://tudu-4e054.web.app/
+* Link #2: https://tudu-4e054.firebaseapp.com/
 
 ## Screenshot
 
-![image](https://github.com/reachstark/pinia-tasks/assets/126941130/f638ee68-0115-41d6-b712-34e5c5e3bf3a)
+<img width="402" alt="Screenshot 2024-03-13 at 9 32 16 at night" src="https://github.com/reachstark/pinia-tasks/assets/126941130/9e447646-b2f0-4e79-9b55-e362c77d36c2">
+
+<img width="973" alt="Screenshot 2024-03-13 at 9 31 46 at night" src="https://github.com/reachstark/pinia-tasks/assets/126941130/856f40ce-d9bb-4286-8725-25ef09d1b680">
 
 
 ## Customize configuration
@@ -28,14 +30,4 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-### Install JSON-SERVER
-```sh
-npm install -g json-server
-```
-
-### Watch JSON
-```sh
-json-server -w ./data/db.json
 ```
