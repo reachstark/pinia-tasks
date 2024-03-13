@@ -12,7 +12,7 @@
         >Add Task</button>
       </div>
     </div>
-  </template>
+</template>
   
   <script>
   import { ref } from 'vue';
@@ -67,18 +67,26 @@
     background-color: #80AB82;
     padding: 20px;
     width: 80%;
+    min-width: 80%;
     text-align: center;
     border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
   }
   
   .popup-content h3 {
     margin-top: 0;
     margin-bottom: 10px;
   }
+
+  .popup-content form {
+    width: 120%;
+    box-sizing: border-box;
+  }
   
   .popup-content input {
     padding: 10px;
-    width: 73%;
     border-radius: 12px;
     margin-bottom: 10px;
   }
