@@ -33,12 +33,12 @@
                 if (newTask.value.trim()) {
                     taskStore.addTask(
                         {
-                            id: Math.floor(Math.random() * 1000000).toString(),
                             title: newTask.value,
                             isFav: false,
                             completed: false,
-                        }
-                    )
+                        },
+                        newTask.value
+                    );
                 }
                  // reset the text editing controller
                  newTask.value = ''
