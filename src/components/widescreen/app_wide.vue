@@ -14,6 +14,9 @@
 
         <!-- filter -->
         <div class="filter">
+            <div>
+            <RefreshButton />
+            </div>
             <button class="filter-btn" :class="{ 'active': filter === 'all' }"
             @click="filter = 'all'">All</button>
             <button class="filter-btn" :class="{ 'active': filter === 'favs' }"

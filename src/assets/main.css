@@ -289,3 +289,9 @@ form button:hover {
 .task-list-mobile {
     padding-top: 8px;
 }
+
+.refresh-btn {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+}

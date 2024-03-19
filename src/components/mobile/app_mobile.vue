@@ -5,12 +5,17 @@
         <div class="appbar">
         {{ taskStore.appName }}
        </div>
+       <div>
+            <RefreshButton />
+        </div>
       </header>
   
       <!-- Main Content Area -->
       <main class="mt-16 mb-16 px-4">
+        
        <!-- loading -->
        <div class="loading" v-if="loading">Loading tasks...</div>
+       
        <div class="task-list-mobile">
         <div v-if = "filter === 'all'">
         <div v-for="task in tasks">
@@ -74,6 +79,7 @@
     import { storeToRefs } from 'pinia';
     import { useTaskStore } from '@/stores/TaskStore';
     import AddTaskPopup from '../AddTaskPopup.vue';
+import RefreshButton from '../RefreshButton.vue';
     export default {
     setup() {
         const taskStore = useTaskStore()

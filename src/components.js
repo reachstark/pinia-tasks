@@ -6,6 +6,7 @@ import AppWide from "./components/widescreen/app_wide.vue";
 import AppMobile from "./components/mobile/app_mobile.vue";
 import TaskDetailsMobile from "./components/TaskDetailsMobile.vue";
 import AddTaskPopup from "./components/AddTaskPopup.vue";
+import RefreshButton from "./components/RefreshButton.vue";
 
 export default {
     install(app) {
@@ -18,5 +19,6 @@ export default {
         app.component('TaskDetailsMobile', TaskDetailsMobile)
         app.component('TaskFormWide', TaskFormWide)
         app.component('AddTaskPopup', AddTaskPopup)
+        app.component('RefreshButton', RefreshButton)
     }
 }

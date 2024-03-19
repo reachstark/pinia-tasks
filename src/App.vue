@@ -21,7 +21,7 @@
             }
 
             onMounted(() => {
-                updateWidth()
+                updateWidth() // set initial width
                 window.addEventListener('resize', updateWidth)
             })
 
